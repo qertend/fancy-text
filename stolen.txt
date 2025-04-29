@@ -1,0 +1,5 @@
+Streambuf hack
+https://stackoverflow.com/questions/21148151/why-cant-i-create-a-copy-of-a-stream-buffer
+
+CSI instruction descriptions
+https://en.wikipedia.org/wiki/ANSI_escape_code#Control_Sequence_Introducer_commands

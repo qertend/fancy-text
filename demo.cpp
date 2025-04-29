@@ -1,0 +1,111 @@
+#include "FancyText.h"
+
+#include <termios.h>
+
+using namespace std;
+
+int main(int argc, char const *argv[]) {
+    //FormattedStream Fs;
+    FormattedStream Fs(cout);
+
+    /*Control text*/
+    Fs << "Normal\n";
+
+    /*Font weights*/
+    Fs.setWeight(Bold);
+    Fs << "Bold\n";
+    Fs.setWeight(Faint);
+    Fs<< "Faint\n";
+    Fs.setWeight(Normal);
+
+    /*Italic*/
+    Fs.setItalic(true);
+    Fs << "Italic\n";
+    Fs.setItalic(false);
+    
+    /*Underline*/
+    Fs.setUnderline(Single);
+    Fs << "Underline(Single)\n";
+    Fs.setUnderline(Double);
+    Fs << "Underline(Double)\n";
+    Fs.setUnderline(NoUnderline);
+
+    /*Blinking*/
+    Fs.setBlink(Slow);
+    Fs << "Blinking(Slow)\n";
+    Fs.setBlink(Rapid);
+    Fs << "Blinking(Rapid)\n";
+    Fs.setBlink(NoBlink);
+
+    /*Inverted*/
+    Fs.setInverted(true);
+    Fs << "Inverted\n";
+    Fs.setInverted(false);
+
+    /*Invisible*/
+    Fs.setInvisible(true);
+    Fs << "Invisible\n";
+    Fs.setInvisible(false);
+
+    /*Crossed*/
+    Fs.setCrossed(true);
+    Fs << "Crossed\n";
+    Fs.setCrossed(false);
+
+    /*Alternative fonts*/
+    for (int i = 0; i < 10; i++) {
+        Fs.setFont(i);
+        Fs << "Font[" << i << "]\n";
+    }
+    Fs.setFont(0);
+
+    /*Foreground Colours*/
+    Fs << "COLOURS\nFG-----\n";
+    for (int i = Black; i <= Default; i++) {
+        int h = Fs.setFcolor(i);
+        if (h == -1) cerr << "aw man";
+        Fs << "Normal\n";
+        Fs.setFcolor(Format::Bright(i));
+        Fs << "Bright\n";
+    }
+    Fs.setFcolor(Default);
+    
+
+
+    /*Background Colours*/
+    Fs << "BG-----\n";
+    for (int i = Black; i <= Default; i++) {
+        Fs.setBcolor(i);
+        Fs << "Normal"; //having the newline here causes some weird stuff
+        Fs.setBcolor(Default);
+        Fs << '\n';
+
+        Fs.setBcolor(Format::Bright(i));
+        Fs << "Bright"; 
+        Fs.setBcolor(Default);
+        Fs << '\n';
+    }
+
+    /*
+        TODO: make a demo for the CSI commands
+    */
+
+    /*Bell*/
+    Fs << "\nPress Enter to hear the bell\n Enter Q to exit\n";
+    char in;
+    while (true) {
+        in = getchar();
+        if (in == 'q' || in == 'Q') break;
+        Fs.bell();
+    }
+    
+
+    cout << "Exited successfuly\n";
+    return 0;
+}
+
+/**
+ * TODO
+ * 256 color support?
+ * 
+ */
