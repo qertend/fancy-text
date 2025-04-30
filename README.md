@@ -1,0 +1,1 @@
+This library provides output formatting on supported terminals, mainly by using commands defined by the ECMA-48 standard.
