@@ -1,0 +1,1 @@
+Egy kódkönyvtár ami lehetővé teszi a kimeneti szöveg kinézetének(szöveg és háttér színe, dőlt betűk, félkövér betűk, villogó szöveg, stb.) egyszerű beállítását.
