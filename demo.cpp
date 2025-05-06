@@ -91,6 +91,10 @@ int main(int argc, char const *argv[]) {
     */
 
     /*Bell*/
+    /**
+     * This is horrible, but input buffering is managed by the terminal
+     * and I don't know of a universal way to change that
+     */
     Fs << "\nPress Enter to hear the bell\n Enter Q to exit\n";
     char in;
     while (true) {

@@ -4,21 +4,21 @@
 #include "FormattedBuffer.h"
 #include <ostream>
 
-//for ED and EL functions
+//for EiD and EiL functions
 typedef enum {ClearAfter, ClearBefore, ClearAll} EraseType;
 
-class FormattedStream: public FormattedBuffer, public ostream {
+class FormattedStream: public FormattedBuffer, public std::ostream {
     /*the output to manipulate and write to*/
-    ostream& display;
+    std::ostream& display;
 
     /**
      * used to shorten single parameter CSI instructions by
      * inserting the repetitive part ( \e[ n ) into the stream 
      * */
-    ostream& CSIsp(int n);
+    std::ostream& CSIsp(int n);
 public:
     //FormattedStream();
-    FormattedStream(ostream&);
+    FormattedStream(std::ostream&);
 
     void bell();
 

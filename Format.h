@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 /**
  * For bright colours, colour code + 60
  * For background colour, colour code + 10
@@ -51,8 +49,8 @@ class Format {
     bool setInverted(bool);
 
 
-    string getFormatString() const;
-    static string getResetString();
+    std::string getFormatString() const;
+    static std::string getResetString();
 };
 
 #endif

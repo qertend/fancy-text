@@ -2,9 +2,9 @@
 
 #include <ostream>
 
-FormattedStream::FormattedStream(ostream& os): FormattedBuffer(os.rdbuf()), ostream(this), display(os) {}
+FormattedStream::FormattedStream(std::ostream& os): FormattedBuffer(os.rdbuf()), std::ostream(this), display(os) {}
 
-ostream& FormattedStream::CSIsp(int n) {
+std::ostream& FormattedStream::CSIsp(int n) {
     return display << "\e[" << n;
 }
 

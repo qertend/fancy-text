@@ -4,15 +4,15 @@
 #include "Format.h"
 #include <streambuf>
 
-class FormattedBuffer: public Format, public streambuf {
+class FormattedBuffer: public Format, public std::streambuf {
     private:
         std::streambuf* buf;
     public:
     FormattedBuffer();
-    FormattedBuffer(streambuf*);
+    FormattedBuffer(std::streambuf*);
 
     protected:
-    streamsize xsputn(const char_type* s, streamsize n) override;
+    std::streamsize xsputn(const char_type* s, std::streamsize n) override;
     int_type overflow(int_type c) override;
 };
 
