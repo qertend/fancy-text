@@ -111,5 +111,7 @@ int main(int argc, char const *argv[]) {
 /**
  * TODO
  * 256 color support?
- * 
+ * as a toggleable option
+ * make formatting more efficient by
+ * not resetting the format codes after every write
  */
