@@ -17,8 +17,8 @@ class FormattedStream: public FormattedBuffer, public std::ostream {
      * */
     std::ostream& CSIsp(int n);
 public:
-    //FormattedStream();
     FormattedStream(std::ostream&, bool = false);
+    FormattedStream(bool = false);
 
     void bell();
 
