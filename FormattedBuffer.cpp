@@ -52,9 +52,3 @@ std::streamsize FormattedBuffer::xsputn(const char_type* s, std::streamsize n) {
 
     return re;
 }
-
-
-std::streambuf::int_type FormattedBuffer::overflow(int_type c) {
-    buf->sputc(c);
-    return c;
-}

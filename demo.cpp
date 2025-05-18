@@ -7,15 +7,15 @@ int main(int argc, char const *argv[]) {
     FormattedStream Fs(cout, true);
 
     /*Greedy Fs test*/
-    Fs.setBcolor(Magenta);
+    Fs.setFcolor(FormattedStream::Bright(Blue));
     Fs.setWeight(Bold);
 
     //Fs doesn't update until you actually write something to it
     Fs << "";
 
-    Fs << "Greedy = " << Fs.getGreedy() << " FormattedStream test\n";
+    cout << "Greedy = " << Fs.getGreedy() << " FormattedStream test\n";
 
-    Fs.setBcolor(Default);
+    Fs.setFcolor(Default);
     Fs.setWeight(Normal);
 
     /*Control text*/

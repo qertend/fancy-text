@@ -49,8 +49,7 @@ class Format {
     bool setCrossed(bool);
     bool setInvisible(bool);
     bool setInverted(bool);
-    bool setUpdateNeeded(bool);
-
+    
     protected:
 
     std::string getFormatString() const;
