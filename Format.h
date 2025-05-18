@@ -4,10 +4,10 @@
 #include <iostream>
 
 /**
- * For bright colours, colour code + 60
- * For background colour, colour code + 10
+ * For bright colors, color code + 60
+ * For background color, color code + 10
  */
-typedef enum { Black = 30, Red, Green, Yellow, Blue, Magenta, cyan, White, Default } Colour;
+typedef enum { Black = 30, Red, Green, Yellow, Blue, Magenta, cyan, White, Default } color;
 
 typedef enum { Bold = 1, Faint, Normal = 22 } FontWeight;
 
@@ -28,9 +28,11 @@ class Format {
     bool italic;
     bool crossed;
     bool invisible;
-    //switch foreground and background colours
+    //switch foreground and background colors
     bool inverted;
     
+    //used in greedy mode
+    bool updateNeeded;
     public:
     
     Format();
@@ -47,7 +49,7 @@ class Format {
     bool setCrossed(bool);
     bool setInvisible(bool);
     bool setInverted(bool);
-
+    bool setUpdateNeeded(bool);
 
     std::string getFormatString() const;
     static std::string getResetString();

@@ -1,12 +1,22 @@
 #include "FancyText.h"
 
-#include <termios.h>
-
 using namespace std;
 
 int main(int argc, char const *argv[]) {
     //FormattedStream Fs;
-    FormattedStream Fs(cout);
+    FormattedStream Fs(cout, true);
+
+    /*Greedy Fs test*/
+    Fs.setBcolor(Magenta);
+    Fs.setWeight(Bold);
+
+    //Fs doesn't update until you actually write something to it
+    Fs << "";
+
+    cout << "Greedy = " << Fs.getGreedy() << " FormattedStream test\n";
+
+    Fs.setBcolor(Default);
+    Fs.setWeight(Normal);
 
     /*Control text*/
     Fs << "Normal\n";
@@ -59,8 +69,8 @@ int main(int argc, char const *argv[]) {
     }
     Fs.setFont(0);
 
-    /*Foreground Colours*/
-    Fs << "COLOURS\nFG-----\n";
+    /*Foreground colors*/
+    Fs << "COLORS\nFG-----\n";
     for (int i = Black; i <= Default; i++) {
         int h = Fs.setFcolor(i);
         if (h == -1) cerr << "aw man";
@@ -72,7 +82,7 @@ int main(int argc, char const *argv[]) {
     
 
 
-    /*Background Colours*/
+    /*Background colors*/
     Fs << "BG-----\n";
     for (int i = Black; i <= Default; i++) {
         Fs.setBcolor(i);
@@ -95,13 +105,14 @@ int main(int argc, char const *argv[]) {
      * This is horrible, but input buffering is managed by the terminal
      * and I don't know of a universal way to change that
      */
+    /*
     Fs << "\nPress Enter to hear the bell\n Enter Q to exit\n";
     char in;
     while (true) {
         in = getchar();
         if (in == 'q' || in == 'Q') break;
         Fs.bell();
-    }
+    } */
     
 
     cout << "Exited successfuly\n";
@@ -111,8 +122,10 @@ int main(int argc, char const *argv[]) {
 /**
  * TODO
  * 256 color support?
+ * 
  * as a toggleable option (bool greedy)
  * make formatting more efficient by
  * not resetting the format codes after every write
- * fix bug where the rest of the line is coloured if nl has a background colour
+ * 
+ * fix bug where the rest of the line is colored if nl has a background color
  */
