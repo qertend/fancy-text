@@ -13,7 +13,7 @@ int main(int argc, char const *argv[]) {
     //Fs doesn't update until you actually write something to it
     Fs << "";
 
-    cout << "Greedy = " << Fs.getGreedy() << " FormattedStream test\n";
+    Fs << "Greedy = " << Fs.getGreedy() << " FormattedStream test\n";
 
     Fs.setBcolor(Default);
     Fs.setWeight(Normal);
@@ -39,6 +39,11 @@ int main(int argc, char const *argv[]) {
     Fs.setUnderline(Double);
     Fs << "Underline(Double)\n";
     Fs.setUnderline(NoUnderline);
+
+    /*Overline*/
+    Fs.setOverline(true);
+    Fs << "Overline\n";
+    Fs.setOverline(false);
 
     /*Blinking*/
     Fs.setBlink(Slow);
@@ -86,14 +91,10 @@ int main(int argc, char const *argv[]) {
     Fs << "BG-----\n";
     for (int i = Black; i <= Default; i++) {
         Fs.setBcolor(i);
-        Fs << "Normal"; //having the newline here causes some weird stuff
-        Fs.setBcolor(Default);
-        Fs << '\n';
+        Fs << "Normal\n";
 
         Fs.setBcolor(Format::Bright(i));
-        Fs << "Bright"; 
-        Fs.setBcolor(Default);
-        Fs << '\n';
+        Fs << "Bright\n"; 
     }
 
     /*

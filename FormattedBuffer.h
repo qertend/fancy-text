@@ -8,6 +8,9 @@ class FormattedBuffer: public Format, public std::streambuf {
     private:
         bool greedy;
         std::streambuf* buf;
+        bool updateNeeded;
+
+        void setUpdateNeeded() override;
     public:
         FormattedBuffer(std::streambuf*, bool = false);
         bool getGreedy();

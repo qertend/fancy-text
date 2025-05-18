@@ -32,7 +32,7 @@ class Format {
     bool inverted;
     
     //used in greedy mode
-    bool updateNeeded;
+    virtual void setUpdateNeeded() = 0;
     public:
     
     Format();
@@ -50,6 +50,8 @@ class Format {
     bool setInvisible(bool);
     bool setInverted(bool);
     bool setUpdateNeeded(bool);
+
+    protected:
 
     std::string getFormatString() const;
     static std::string getResetString();

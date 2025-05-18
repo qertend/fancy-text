@@ -8,11 +8,10 @@ using namespace std;
 
 Format::Format() : fcolor(Default), bcolor(Default+10), weight(Normal),
     underline(NoUnderline), overline(false), blink(NoBlink), font(0),
-    italic(false), crossed(false), invisible(false), inverted(false),
-    updateNeeded(false) {}
+    italic(false), crossed(false), invisible(false), inverted(false) {}
 
 int Format::setFcolor(int newC) {
-    if (newC != fcolor) updateNeeded = true;
+    if (newC != fcolor) setUpdateNeeded();
     int prevC = fcolor;
     if ((newC >= Black && newC <= Default) ||
         (newC >= Bright(Black) && newC <= Bright(Default))) {
@@ -24,7 +23,7 @@ int Format::setFcolor(int newC) {
 }
 
 int Format::setBcolor(int newC) {
-    if (newC != bcolor) updateNeeded = true;
+    if (newC != bcolor) setUpdateNeeded();
 
     int prevC = bcolor - 10;
 
@@ -42,7 +41,7 @@ int Format::Bright(int col) {
 }
 
 FontWeight Format::setWeight(FontWeight inWeight) {
-    if (inWeight != weight) updateNeeded = true;
+    if (inWeight != weight) setUpdateNeeded();
 
     FontWeight prev = weight;
     weight = inWeight;
@@ -50,7 +49,7 @@ FontWeight Format::setWeight(FontWeight inWeight) {
 }
 
 Underline Format::setUnderline(Underline inUnder) {
-    if (inUnder != underline) updateNeeded = true;
+    if (inUnder != underline) setUpdateNeeded();
 
     Underline prev = underline;
     underline = inUnder;
@@ -58,7 +57,7 @@ Underline Format::setUnderline(Underline inUnder) {
 }
 
 BlinkSpeed Format::setBlink(BlinkSpeed inBlink) {
-    if (inBlink != blink) updateNeeded = true;
+    if (inBlink != blink) setUpdateNeeded();
 
     BlinkSpeed prev = blink;
     blink = inBlink;
@@ -66,7 +65,7 @@ BlinkSpeed Format::setBlink(BlinkSpeed inBlink) {
 }
 
 bool Format::setOverline(bool inOverline) {
-    if (inOverline != overline) updateNeeded = true;
+    if (inOverline != overline) setUpdateNeeded();
 
     bool prev = overline;
     italic = inOverline;
@@ -74,7 +73,7 @@ bool Format::setOverline(bool inOverline) {
 }
 
 int Format::setFont(int inFont) {
-    if (inFont != font) updateNeeded = true;
+    if (inFont != font) setUpdateNeeded();
 
     int prev = font;
     if (inFont >= 0 && inFont <= 9) font = inFont;
@@ -83,7 +82,7 @@ int Format::setFont(int inFont) {
 }
 
 bool Format::setItalic(bool inItalic) {
-    if (inItalic != italic) updateNeeded = true;
+    if (inItalic != italic) setUpdateNeeded();
 
     bool prev = italic;
     italic = inItalic;
@@ -91,7 +90,7 @@ bool Format::setItalic(bool inItalic) {
 }
 
 bool Format::setCrossed(bool inCrossed) {
-    if (inCrossed != crossed) updateNeeded = true;
+    if (inCrossed != crossed) setUpdateNeeded();
 
     bool prev = crossed;
     crossed = inCrossed;
@@ -99,7 +98,7 @@ bool Format::setCrossed(bool inCrossed) {
 }
 
 bool Format::setInvisible(bool inInvisible) {
-    if (inInvisible != invisible) updateNeeded = true;
+    if (inInvisible != invisible) setUpdateNeeded();
 
     bool prev = invisible;
     invisible = inInvisible;
@@ -107,17 +106,11 @@ bool Format::setInvisible(bool inInvisible) {
 }
 
 bool Format::setInverted(bool inInverted) {
-    if (inInverted != inverted) updateNeeded = true;
+    if (inInverted != inverted) setUpdateNeeded();
 
     bool prev = inverted;
     inverted = inInverted;
     return prev;
-}
-
-bool Format::setUpdateNeeded(bool in) {
-    bool re = updateNeeded;
-    updateNeeded = in;
-    return re;
 }
 
 string Format::getFormatString() const {
