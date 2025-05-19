@@ -1,10 +1,15 @@
-/* #include <iostream>
+/* #include "FancyText.h"
+#include <iostream>
 
 int main(int argc, char const *argv[])
 {
-    using namespace std;
+    FormattedStream fs(true);
+
+    //greedy example
+    fs.setBcolor(Red);
+    fs << "Hello";
+    std::cout << " World\n";
     
-    cout << "\e[7mHello\e[7m world\e[0m\n";
     return 0;
 }
  */

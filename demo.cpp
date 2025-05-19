@@ -128,5 +128,5 @@ int main(int argc, char const *argv[]) {
  * make formatting more efficient by
  * not resetting the format codes after every write
  * 
- * fix bug where the rest of the line is colored if nl has a background color
+ * fix bug where the rest of the line is c olored if nl has a background color
  */
