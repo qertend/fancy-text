@@ -97,36 +97,6 @@ int main(int argc, char const *argv[]) {
         Fs << "Bright\n"; 
     }
 
-    /*
-        TODO: make a demo for the CSI commands
-    */
-
-    /*Bell*/
-    /**
-     * This is horrible, but input buffering is managed by the terminal
-     * and I don't know of a universal way to change that
-     */
-    /*
-    Fs << "\nPress Enter to hear the bell\n Enter Q to exit\n";
-    char in;
-    while (true) {
-        in = getchar();
-        if (in == 'q' || in == 'Q') break;
-        Fs.bell();
-    } */
-    
-
     cout << "Exited successfuly\n";
     return 0;
 }
-
-/**
- * TODO
- * 256 color support?
- * 
- * as a toggleable option (bool greedy)
- * make formatting more efficient by
- * not resetting the format codes after every write
- * 
- * fix bug where the rest of the line is c olored if nl has a background color
- */
